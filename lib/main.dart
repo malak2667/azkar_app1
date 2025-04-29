@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import '  screens/evening_azkar_page.dart';
 import '  screens/morning_azkar_page.dart';
+import '  screens/sleep_azkar_page.dart';
 
 
 void main() {
@@ -16,14 +17,14 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'تطبيق الأذكار',
-      home: const HomePage(),
-      // 👈 هذا هو الكود المسؤول عن اتجاه النصوص من اليمين لليسار
+      // هنا ضبط اتجاه التطبيق
       builder: (context, child) {
         return Directionality(
-          textDirection: TextDirection.rtl, // ← هنا نخلي النصوص تبدأ من اليمين
+          textDirection: TextDirection.rtl, // ✅ من اليمين لليسار
           child: child!,
         );
       },
+      home: const HomePage(),
     );
   }
 }
@@ -43,6 +44,7 @@ class HomePage extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
+            // زر أذكار الصباح
             ElevatedButton(
               style: ElevatedButton.styleFrom(
                 backgroundColor: Colors.green,
@@ -63,6 +65,7 @@ class HomePage extends StatelessWidget {
               },
             ),
             const SizedBox(height: 20),
+            // زر أذكار المساء
             ElevatedButton(
               style: ElevatedButton.styleFrom(
                 backgroundColor: Colors.green,
@@ -79,6 +82,27 @@ class HomePage extends StatelessWidget {
                 Navigator.push(
                   context,
                   MaterialPageRoute(builder: (context) => const EveningAzkarPage()),
+                );
+              },
+            ),
+            const SizedBox(height: 20),
+            // زر أذكار النوم
+            ElevatedButton(
+              style: ElevatedButton.styleFrom(
+                backgroundColor: Colors.green,
+                padding: const EdgeInsets.symmetric(horizontal: 50, vertical: 20),
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(15),
+                ),
+              ),
+              child: const Text(
+                'أذكار النوم',
+                style: TextStyle(fontSize: 22),
+              ),
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => const SleepAzkarPage()),
                 );
               },
             ),
