@@ -8,9 +8,9 @@ class ForgivenessPage extends StatefulWidget {
 }
 
 class _ForgivenessPageState extends State<ForgivenessPage> {
-  int _counter = 0;
+  int _counter = 0;  // عداد التكرار
 
-
+  // دالة لتصفير العداد
   void _resetCounter() {
     setState(() {
       _counter = 0;
@@ -29,7 +29,7 @@ class _ForgivenessPageState extends State<ForgivenessPage> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-
+            // دائرة تحتوي على العد التكراري
             Container(
               width: 150,
               height: 150,
@@ -47,11 +47,11 @@ class _ForgivenessPageState extends State<ForgivenessPage> {
               ),
             ),
             const SizedBox(height: 20),
-
+            // زر التكرار
             ElevatedButton(
               onPressed: () {
                 setState(() {
-                  _counter++;
+                  _counter++;  // زيادة العداد عند الضغط
                 });
               },
               style: ElevatedButton.styleFrom(
@@ -67,7 +67,7 @@ class _ForgivenessPageState extends State<ForgivenessPage> {
               ),
             ),
             const SizedBox(height: 20),
-
+            // زر التصفير
             ElevatedButton(
               onPressed: _resetCounter,
               style: ElevatedButton.styleFrom(
