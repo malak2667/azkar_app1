@@ -1,18 +1,18 @@
 import 'package:flutter/material.dart';
 
-class MorningAzkarPage extends StatefulWidget {
-  const MorningAzkarPage({super.key});
+class AfterPrayerAzkarPage extends StatefulWidget {
+  const AfterPrayerAzkarPage({super.key});
 
   @override
-  State<MorningAzkarPage> createState() => _MorningAzkarPageState();
+  State<AfterPrayerAzkarPage> createState() => _AfterPrayerAzkarPageState();
 }
 
-class _MorningAzkarPageState extends State<MorningAzkarPage> {
-  final List<String> morningAzkar = [
-    'اللهم بك أصبحنا وبك أمسينا، وبك نحيا وبك نموت وإليك المصير',
-    'أصبحنا على فطرة الإسلام، وكلمة الإخلاص، ودين نبينا محمد صلى الله عليه وسلم',
-    'اللهم إني أسالك العافية في الدنيا والآخرة',
-    'اللهم اجعلنا من أهل الذكر والشكر والطاعة',
+class _AfterPrayerAzkarPageState extends State<AfterPrayerAzkarPage> {
+  final List<String> prayerAzkar = [
+    'استغفر الله (3 مرات)',
+    'اللهم أنت السلام ومنك السلام تباركت يا ذا الجلال والإكرام',
+    'لا إله إلا الله وحده لا شريك له، له الملك وله الحمد وهو على كل شيء قدير',
+    'اللهم أعني على ذكرك وشكرك وحسن عبادتك',
   ];
 
   List<int> counters = [];
@@ -20,7 +20,7 @@ class _MorningAzkarPageState extends State<MorningAzkarPage> {
   @override
   void initState() {
     super.initState();
-    counters = List.filled(morningAzkar.length, 0);
+    counters = List.filled(prayerAzkar.length, 0);
   }
 
   @override
@@ -31,13 +31,13 @@ class _MorningAzkarPageState extends State<MorningAzkarPage> {
         appBar: AppBar(
           backgroundColor: Colors.green,
           title: const Text(
-            'أذكار الصباح',
+            'أذكار بعد الصلاة',
             style: TextStyle(fontSize: 22),
           ),
         ),
         backgroundColor: Colors.green.shade50,
         body: ListView.builder(
-          itemCount: morningAzkar.length,
+          itemCount: prayerAzkar.length,
           itemBuilder: (context, index) {
             return Card(
               margin: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
@@ -50,7 +50,7 @@ class _MorningAzkarPageState extends State<MorningAzkarPage> {
                 child: Column(
                   children: [
                     Text(
-                      morningAzkar[index],
+                      prayerAzkar[index],
                       style: const TextStyle(fontSize: 20),
                       textAlign: TextAlign.center,
                     ),
