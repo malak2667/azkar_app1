@@ -12,28 +12,27 @@ class Azkar {
   });
 }
 
-class MorningAzkarPage extends StatefulWidget {
-  const MorningAzkarPage({super.key});
+class EveningAzkarPage extends StatefulWidget {
+  const EveningAzkarPage({super.key});
 
   @override
-  State<MorningAzkarPage> createState() => _MorningAzkarPageState();
+  State<EveningAzkarPage> createState() => _EveningAzkarPageState();
 }
 
-class _MorningAzkarPageState extends State<MorningAzkarPage> {
-  List<Azkar> morningAzkar = [
-    Azkar(content: 'أصبحنا وأصبح الملك لله والحمد لله...', repeatCount: 10),
+class _EveningAzkarPageState extends State<EveningAzkarPage> {
+  List<Azkar> eveningAzkar = [
+    Azkar(content: 'أمسينا وأمسى الملك لله والحمد لله...', repeatCount: 10),
     Azkar(content: 'رضيت بالله ربًا، وبالإسلام دينًا، وبمحمد ﷺ نبيًا.', repeatCount: 10),
-    Azkar(content: '  اللهم أنت ربي لا إله إلا أنت، خلقتني وأنا عبدك وانا على  عهدك ووعدك ما استطعت اعوذ بك من شر ما صنعت ابوء لك بنعمتك علي وابوء بذنبي فاغفر لي فانه لا يغفر الذنوب الا انت', repeatCount: 10),
-    Azkar(content: 'اللهم إني أصبحت أشهدك وأشهد حملة عرشك...', repeatCount: 10),
+    Azkar(content: 'اللهم أنت ربي لا إله إلا أنت، خلقتني وأنا عبدك...', repeatCount: 10),
+    Azkar(content: 'اللهم إني أمسيت أشهدك وأشهد حملة عرشك...', repeatCount: 10),
     Azkar(content: 'بسم الله الذي لا يضر مع اسمه شيء في الأرض ولا في السماء...', repeatCount: 3),
-    Azkar(content: 'رضيت بالله ربًا وبالإسلام دينًا وبمحمد ﷺ نبيًا ورسولًا.', repeatCount: 3),
     Azkar(content: 'سبحان الله وبحمده.', repeatCount: 100),
   ];
 
   void incrementCount(int index) {
     setState(() {
-      if (morningAzkar[index].currentCount < morningAzkar[index].repeatCount) {
-        morningAzkar[index].currentCount++;
+      if (eveningAzkar[index].currentCount < eveningAzkar[index].repeatCount) {
+        eveningAzkar[index].currentCount++;
       }
     });
   }
@@ -42,14 +41,14 @@ class _MorningAzkarPageState extends State<MorningAzkarPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('أذكار الصباح'),
+        title: const Text('أذكار المساء'),
         backgroundColor: Colors.green,
       ),
       backgroundColor: Colors.green.shade50,
       body: ListView.builder(
-        itemCount: morningAzkar.length,
+        itemCount: eveningAzkar.length,
         itemBuilder: (context, index) {
-          final azkar = morningAzkar[index];
+          final azkar = eveningAzkar[index];
           return Card(
             margin: const EdgeInsets.all(12),
             color: Colors.white,
