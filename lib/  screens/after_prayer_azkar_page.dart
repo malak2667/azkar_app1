@@ -41,7 +41,7 @@ class _AfterPrayerAzkarPageState extends State<AfterPrayerAzkarPage> {
           itemBuilder: (context, index) {
             return Card(
               margin: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
-              color: Colors.white,
+              color: Colors.green.shade100,
               shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(15),
               ),

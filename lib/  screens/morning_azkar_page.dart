@@ -52,7 +52,7 @@ class _MorningAzkarPageState extends State<MorningAzkarPage> {
           final azkar = morningAzkar[index];
           return Card(
             margin: const EdgeInsets.all(12),
-            color: Colors.white,
+            color: Colors.green.shade100,
             shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(15),
             ),

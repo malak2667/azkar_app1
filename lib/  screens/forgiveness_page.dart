@@ -1,5 +1,15 @@
 import 'package:flutter/material.dart';
 
+void main() {
+  runApp(const Directionality(
+    textDirection: TextDirection.rtl,
+    child: MaterialApp(
+      debugShowCheckedModeBanner: false,
+      home: ForgivenessPage(),
+    ),
+  ));
+}
+
 class ForgivenessPage extends StatefulWidget {
   const ForgivenessPage({super.key});
 
@@ -8,73 +18,123 @@ class ForgivenessPage extends StatefulWidget {
 }
 
 class _ForgivenessPageState extends State<ForgivenessPage> {
-  int _counter = 0;  // عداد التكرار
-
-  // دالة لتصفير العداد
-  void _resetCounter() {
-    setState(() {
-      _counter = 0;
-    });
-  }
+  int counter = 0;
 
   @override
   Widget build(BuildContext context) {
+    double progress = counter / 100;
+
     return Scaffold(
       appBar: AppBar(
-        title: const Text('استغفار'),
+        title: const Align(
+          alignment: Alignment.centerRight,
+          child: Text('استغفار'),
+        ),
         backgroundColor: Colors.green,
+        leading: IconButton(
+          icon: const Icon(Icons.arrow_back),
+          onPressed: () {
+            Navigator.pop(context); // يرجع للي قبل
+          },
+        ),
       ),
       backgroundColor: Colors.green.shade50,
-      body: Center(
+      body: Padding(
+        padding: const EdgeInsets.all(20),
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            // دائرة تحتوي على العد التكراري
-            Container(
-              width: 150,
-              height: 150,
-              decoration: BoxDecoration(
-                color: Colors.white,
-                shape: BoxShape.circle,
-                border: Border.all(color: Colors.green, width: 5),
-              ),
-              child: Center(
-                child: Text(
-                  'استغفر الله\n($_counter)',
-                  style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
-                  textAlign: TextAlign.center,
+            const Align(
+              alignment: Alignment.centerRight,
+              child: Text(
+                'استغفار',
+                style: TextStyle(
+                  fontSize: 28,
+                  color: Colors.green,
+                  fontWeight: FontWeight.bold,
                 ),
               ),
             ),
-            const SizedBox(height: 20),
-            // زر التكرار
+            const SizedBox(height: 30),
+            // دائرة العداد
+            Stack(
+              alignment: Alignment.center,
+              children: [
+                Container(
+                  width: 180,
+                  height: 180,
+                  decoration: BoxDecoration(
+                    shape: BoxShape.circle,
+                    color: Colors.white,
+                    border: Border.all(color: Colors.green, width: 6),
+                  ),
+                  child: Center(
+                    child: Text(
+                      'استغفر الله',
+                      style: TextStyle(
+                        fontSize: 20,
+                        color: Colors.green.shade800,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                  ),
+                ),
+                SizedBox(
+                  width: 180,
+                  height: 180,
+                  child: CircularProgressIndicator(
+                    value: progress,
+                    strokeWidth: 6,
+                    backgroundColor: Colors.transparent,
+                    valueColor:
+                    const AlwaysStoppedAnimation<Color>(Colors.red),
+                  ),
+                ),
+              ],
+            ),
+            const SizedBox(height: 30),
+            Text(
+              '$counter / 100',
+              style: const TextStyle(
+                fontSize: 22,
+                fontWeight: FontWeight.bold,
+                color: Colors.green,
+              ),
+            ),
+            const SizedBox(height: 30),
             ElevatedButton(
               onPressed: () {
                 setState(() {
-                  _counter++;  // زيادة العداد عند الضغط
+                  if (counter < 100) {
+                    counter++;
+                  }
                 });
               },
               style: ElevatedButton.styleFrom(
                 backgroundColor: Colors.green,
-                padding: const EdgeInsets.symmetric(horizontal: 30, vertical: 12),
+                padding:
+                const EdgeInsets.symmetric(horizontal: 50, vertical: 15),
                 shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(10),
+                  borderRadius: BorderRadius.circular(12),
                 ),
               ),
               child: const Text(
-                'تكرار',
-                style: TextStyle(fontSize: 18),
+                'تسبيح',
+                style: TextStyle(fontSize: 20),
               ),
             ),
             const SizedBox(height: 20),
-            // زر التصفير
             ElevatedButton(
-              onPressed: _resetCounter,
+              onPressed: () {
+                setState(() {
+                  counter = 0;
+                });
+              },
               style: ElevatedButton.styleFrom(
-                backgroundColor: Colors.red,
-                padding: const EdgeInsets.symmetric(horizontal: 30, vertical: 12),
+                backgroundColor: Colors.white70,
+                padding:
+                const EdgeInsets.symmetric(horizontal: 50, vertical: 15),
                 shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(10),
+                  borderRadius: BorderRadius.circular(12),
                 ),
               ),
               child: const Text(

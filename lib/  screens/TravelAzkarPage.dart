@@ -83,7 +83,7 @@ class _TravelAzkarPageState extends State<TravelAzkarPage> {
                     });
                   },
                   style: ElevatedButton.styleFrom(
-                    backgroundColor: Colors.red,
+                    backgroundColor: Colors.white70,
                   ),
                   child: const Text('تصفير'),
                 ),
