@@ -18,11 +18,6 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return const Directionality(
       textDirection: TextDirection.rtl,
-
-
-
-
-
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
         title: 'تطبيق الأذكار',
@@ -39,12 +34,18 @@ class HomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('تطبيق الأذكار'),
+        title: const Align(
+          alignment: Alignment.centerRight,
+          child: Text(
+            'تطبيق الأذكار',
+            textDirection: TextDirection.rtl,
+          ),
+        ),
         backgroundColor: Colors.green,
       ),
       backgroundColor: Colors.green.shade50,
       body: GridView.count(
-        crossAxisCount: 3, // ثلاث مربعات في الصف
+        crossAxisCount: 3,
         crossAxisSpacing: 8.0,
         mainAxisSpacing: 8.0,
         padding: const EdgeInsets.all(8.0),
@@ -60,7 +61,6 @@ class HomePage extends StatelessWidget {
     );
   }
 
-  // دالة زر الأذكار
   Widget _buildAzkarButton(BuildContext context, String title, IconData icon, Widget page) {
     return GestureDetector(
       onTap: () {
@@ -76,18 +76,20 @@ class HomePage extends StatelessWidget {
           children: [
             CircleAvatar(
               backgroundColor: Colors.green.shade200,
-              radius: 20, // صغرنا حجم الدائرة
-              child: Icon(icon, color: Colors.white, size: 15), // صغرنا حجم الأيقونة
+              radius: 20,
+              child: Icon(icon, color: Colors.white, size: 15),
             ),
             const SizedBox(height: 1),
-            Text(title, style: const TextStyle(fontSize: 25, fontWeight: FontWeight.bold)), // صغرنا الخط
+            Text(
+              title,
+              style: const TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
+            ),
           ],
         ),
       ),
     );
   }
 
-  // زر الاستغفار
   Widget _buildForgivenessButton(BuildContext context) {
     return GestureDetector(
       onTap: () {

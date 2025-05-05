@@ -8,7 +8,7 @@ class TravelAzkarPage extends StatefulWidget {
 }
 
 class _TravelAzkarPageState extends State<TravelAzkarPage> {
-  List<int> counters = List.generate(10, (index) => 0); // 10 أذكار
+  List<int> counters = List.generate(10, (index) => 0);
 
   List<String> azkarList = [
     'اللَّهُمَّ إنَّا نسألُك في سفرِنا هذا البرَّ والتقوى ومن العملِ ما ترضى',
@@ -25,18 +25,21 @@ class _TravelAzkarPageState extends State<TravelAzkarPage> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text('أذكار السفر'),
-        backgroundColor: Colors.green,
-      ),
-      backgroundColor: Colors.green.shade50,
-      body: ListView.builder(
-        padding: const EdgeInsets.all(16),
-        itemCount: azkarList.length,
-        itemBuilder: (context, index) {
-          return buildZikrCard(index, azkarList[index]);
-        },
+    return Directionality(
+      textDirection: TextDirection.rtl,
+      child: Scaffold(
+        appBar: AppBar(
+          title: const Text('أذكار السفر'),
+          backgroundColor: Colors.green,
+        ),
+        backgroundColor: Colors.green.shade50,
+        body: ListView.builder(
+          padding: const EdgeInsets.all(16),
+          itemCount: azkarList.length,
+          itemBuilder: (context, index) {
+            return buildZikrCard(index, azkarList[index]);
+          },
+        ),
       ),
     );
   }

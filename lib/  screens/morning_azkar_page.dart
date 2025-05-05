@@ -40,48 +40,51 @@ class _MorningAzkarPageState extends State<MorningAzkarPage> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text('أذكار الصباح'),
-        backgroundColor: Colors.green,
-      ),
-      backgroundColor: Colors.green.shade50,
-      body: ListView.builder(
-        itemCount: morningAzkar.length,
-        itemBuilder: (context, index) {
-          final azkar = morningAzkar[index];
-          return Card(
-            margin: const EdgeInsets.all(12),
-            color: Colors.green.shade100,
-            shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(15),
-            ),
-            child: Padding(
-              padding: const EdgeInsets.all(20),
-              child: Column(
-                children: [
-                  Text(
-                    azkar.content,
-                    style: const TextStyle(fontSize: 20, height: 1.5),
-                    textAlign: TextAlign.center,
-                  ),
-                  const SizedBox(height: 20),
-                  ElevatedButton(
-                    style: ElevatedButton.styleFrom(
-                      backgroundColor: Colors.green,
-                      padding: const EdgeInsets.symmetric(horizontal: 25, vertical: 12),
-                    ),
-                    onPressed: () => incrementCount(index),
-                    child: Text(
-                      'عدد التكرار: ${azkar.currentCount}/${azkar.repeatCount}',
-                      style: const TextStyle(fontSize: 16),
-                    ),
-                  ),
-                ],
+    return Directionality(
+      textDirection: TextDirection.rtl,
+      child: Scaffold(
+        appBar: AppBar(
+          title: const Text('أذكار الصباح'),
+          backgroundColor: Colors.green,
+        ),
+        backgroundColor: Colors.green.shade50,
+        body: ListView.builder(
+          itemCount: morningAzkar.length,
+          itemBuilder: (context, index) {
+            final azkar = morningAzkar[index];
+            return Card(
+              margin: const EdgeInsets.all(12),
+              color: Colors.green.shade100,
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(15),
               ),
-            ),
-          );
-        },
+              child: Padding(
+                padding: const EdgeInsets.all(20),
+                child: Column(
+                  children: [
+                    Text(
+                      azkar.content,
+                      style: const TextStyle(fontSize: 20, height: 1.5),
+                      textAlign: TextAlign.center,
+                    ),
+                    const SizedBox(height: 20),
+                    ElevatedButton(
+                      style: ElevatedButton.styleFrom(
+                        backgroundColor: Colors.green,
+                        padding: const EdgeInsets.symmetric(horizontal: 25, vertical: 12),
+                      ),
+                      onPressed: () => incrementCount(index),
+                      child: Text(
+                        'عدد التكرار: ${azkar.currentCount}/${azkar.repeatCount}',
+                        style: const TextStyle(fontSize: 16),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            );
+          },
+        ),
       ),
     );
   }
